@@ -11,7 +11,7 @@ namespace Surveys.Web.Controllers.Results
         /// <summary>
         /// Сохраняет ответы на вопрос и возвращает id следующего вопроса.
         /// </summary>
-        [HttpPost]
+        [HttpPost("save-result")]
         public Task<IActionResult> SaveResult(
             [FromServices] SaveResultAndGetNextQuestionIdQuery query,
             [FromBody] SaveResultContract contract,

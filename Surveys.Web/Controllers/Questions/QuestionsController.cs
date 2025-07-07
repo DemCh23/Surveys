@@ -9,6 +9,9 @@ namespace Surveys.Web.Controllers.Questions
     [Route("[controller]")]
     public class QuestionsController : ApiControllerBase
     {
+        /// <summary>
+        /// Возвращает dto вопроса с его вариантами ответов.
+        /// </summary>
         [HttpGet("{Id:long}/with-answers")]
         public Task<IActionResult> GetQuestionWithAnswers(
             [FromServices] GetQuestionWithAnswersQuery query,
