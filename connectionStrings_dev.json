@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "Survey": "Host=db;Port=5432;Database=surveys_dev;Username=postgres;Password=postgres"
+  }
+}

@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+COPY ["Surveys.Web/Surveys.Web.csproj", "Surveys.Web/"]
+COPY ["Surveys.DataAccess/Surveys.DataAccess.csproj", "Surveys.DataAccess/"]
+COPY ["Surveys.Domain/Surveys.Domain.csproj", "Surveys.Domain/"]
+COPY ["Surveys.Logic/Surveys.Logic.csproj", "Surveys.Logic/"]
+
+RUN dotnet restore "Surveys.Web/Surveys.Web.csproj"
+
+COPY . .
+
+RUN dotnet publish "Surveys.Web/Surveys.Web.csproj" -c Release -o /app
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+
+COPY --from=build /app .
+
+COPY configs/connectionStrings_dev.json ./configs/connectionStrings_dev.json
+
+ENTRYPOINT ["dotnet", "Surveys.Web.dll"]
