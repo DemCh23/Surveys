@@ -15,12 +15,12 @@ namespace Surveys.DataAccess
 
         public async Task InitializeAsync(CancellationToken ct)
         {
-            await using var transaction = await _appDbContext.Database.BeginTransactionAsync(ct);
-
             if (!_appDbContext.Surveys.Any()
                 && !_appDbContext.Questions.Any()
                 && !_appDbContext.Answers.Any())
             {
+                await using var transaction = await _appDbContext.Database.BeginTransactionAsync(ct);
+
                 var survey = await _appDbContext.Surveys.AddAsync(new Survey
                 {
                     Title = "Тестовая анкета",
