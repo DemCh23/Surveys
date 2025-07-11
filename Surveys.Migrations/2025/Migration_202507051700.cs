@@ -1,5 +1,4 @@
 ﻿using FluentMigrator;
-using Surveys.Migrations.Extensions;
 
 namespace Surveys.Migrations._2025
 {
