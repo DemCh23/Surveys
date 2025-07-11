@@ -14,8 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Surveys.DataAccess\Surveys.DataAccess.csproj" />
-    <ProjectReference Include="..\Surveys.Domain\Surveys.Domain.csproj" />
     <ProjectReference Include="..\Surveys.Logic\Surveys.Logic.csproj" />
   </ItemGroup>
 
